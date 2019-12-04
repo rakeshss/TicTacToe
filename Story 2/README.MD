@@ -1,4 +1,4 @@
-<h1># Story2: Now it's time to work on the specification of which player is about to play his turn. </h1>
+<h1> Story2: Now it's time to work on the specification of which player is about to play his turn. </h1>
 
 We can split this requirement into three tests: <br>
 
