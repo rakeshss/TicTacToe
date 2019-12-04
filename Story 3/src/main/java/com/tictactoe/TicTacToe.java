@@ -20,12 +20,7 @@ public class TicTacToe {
 	}
 
 	private Boolean anyWinner() {
-		// vertical
-		for (int i = 0; i < size; i++) {
-			if (board[0][i] == lastPlayer && board[1][i] == lastPlayer && board[2][i] == lastPlayer) {
-				return true;
-			}
-		}
+		int playerTotal = lastPlayer * size;
 
 		// horizontal
 		for (int i = 0; i < size; i++) {
@@ -33,9 +28,16 @@ public class TicTacToe {
 				return true;
 			}
 		}
+		
+		// vertical: validating in different and slightly easier way than horizontal check
+		for (int i = 0; i < size; i++) {
+			if (board[0][i] + board[1][i] + board[2][i] == playerTotal) {
+				return true;
+			}
+		}
 
 		// diagonal
-		if (board[0][0] == lastPlayer && board[1][1] == lastPlayer && board[2][2] == lastPlayer) {
+		if (board[0][0] + board[1][1] + board[2][2] == playerTotal) {
 			return true;
 		}
 
@@ -54,12 +56,6 @@ public class TicTacToe {
 		if (axis < 1 || axis > 3) {
 			throw new RuntimeException("Co-ordinate is outside board");
 		}
-	}
-
-	public static void main(String[] args) {
-		TicTacToe t = new TicTacToe();
-		t.play(2, 1);
-		t.play(2, 1);
 	}
 
 	public char nextPlayer() {
