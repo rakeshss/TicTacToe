@@ -93,4 +93,22 @@ class TicTacToeSpec {
 
 		assertThat("X is the winner", is(equalTo(actual)));
 	}
+	
+	@Test
+	public void whenAllBoxesAreFilledThenDraw() {
+		testInstance.play(1, 1); // X
+		testInstance.play(1, 2); // 0
+		testInstance.play(1, 3); // X
+		testInstance.play(2, 1); // O
+		testInstance.play(2, 2); // X
+		testInstance.play(2, 3); // O
+		testInstance.play(3, 1); // X
+		testInstance.play(3, 3); // O
+		
+		String actual = testInstance.play(3, 2); // X
+
+		assertThat("The result is draw", is(equalTo(actual)));
+	}
+	
+	
 }

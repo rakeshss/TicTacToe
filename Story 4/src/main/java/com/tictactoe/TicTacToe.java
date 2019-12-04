@@ -4,7 +4,7 @@ public class TicTacToe {
 
 	private Character[][] board = { { '\0', '\0', '\0' }, { '\0', '\0', '\0' }, { '\0', '\0', '\0' } };
 	private char lastPlayer = '\0';
-	private int size = 3;
+	private static final int SIZE = 3;
 
 	public String play(int x, int y) {
 		checkAxis(x);
@@ -14,23 +14,38 @@ public class TicTacToe {
 
 		if (anyWinner()) {
 			return lastPlayer + " is the winner";
+		} else if (isDraw()) {
+			return "The result is draw";
+		} else {
+			return "No winner";
 		}
-		return "No winner";
 
 	}
 
+	private boolean isDraw() {
+		for (int x = 0; x < SIZE; x++) {
+			for (int y = 0; y < SIZE; y++) {
+				if (board[x][y] == '\0') {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	private Boolean anyWinner() {
-		int playerTotal = lastPlayer * size;
+		int playerTotal = lastPlayer * SIZE;
 
 		// horizontal
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < SIZE; i++) {
 			if (board[i][0] == lastPlayer && board[i][1] == lastPlayer && board[i][2] == lastPlayer) {
 				return true;
 			}
 		}
-		
-		// vertical: validating in different and slightly easier way than horizontal check
-		for (int i = 0; i < size; i++) {
+
+		// vertical: validating in different and slightly easier way than horizontal
+		// check
+		for (int i = 0; i < SIZE; i++) {
 			if (board[0][i] + board[1][i] + board[2][i] == playerTotal) {
 				return true;
 			}
