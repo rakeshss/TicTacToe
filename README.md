@@ -1,1 +1,1 @@
-# TicTacToe
+# Implementing TicTacToe through TDD.
