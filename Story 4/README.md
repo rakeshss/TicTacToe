@@ -2,5 +2,7 @@
 The only thing missing is how to tackle the draw result.
 
 <br>
-
+<br>
+<br>
+<br>
 Note: The result is a draw when all the boxes are filled.
